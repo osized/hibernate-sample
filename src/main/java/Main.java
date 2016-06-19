@@ -21,8 +21,10 @@ public class Main {
         bobique.setOwner(vasya);
         dao.saveEntity(vasya);
         dao.saveEntity(bobique);
-        List<Pet> pets = dao.readPets();
-        for (Pet pet: pets){
+        List<Object> pets = dao.readObjects("Pet", 4);
+        List<Object> persons = dao.readObjects("Person");
+
+        for (Object pet: pets){
             System.out.println("Read object: " + pet.toString());
         }
 

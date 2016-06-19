@@ -47,14 +47,14 @@ public class DAO {
         return true;
     }
 
-    public List<Pet> readPets() {
+    public List<Object> readObjects(String nameOfTable) {
 
-        List<Pet> pets = Collections.emptyList();
+        List<Object> objects = Collections.emptyList();
         Session session = factory.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            pets = session.createQuery("from Pet").list();
+            objects = session.createQuery("from " + nameOfTable).list();
 
             transaction.commit();
         } catch (HibernateException e) {
@@ -63,17 +63,17 @@ public class DAO {
         } finally {
             session.close();
         }
-        return pets;
+        return objects;
     }
 
-    public List<Person> readPersons() {
+    public List<Object> readObjects(String nameOfTable, int id) {
 
-        List<Person> persons = Collections.emptyList();
+        List<Object> objects = Collections.emptyList();
         Session session = factory.openSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            persons = session.createQuery("from Person").list();
+            objects = session.createQuery("from " + nameOfTable + " where id=" + id).list();
 
             transaction.commit();
         } catch (HibernateException e) {
@@ -82,6 +82,6 @@ public class DAO {
         } finally {
             session.close();
         }
-        return persons;
+        return objects;
     }
 }
