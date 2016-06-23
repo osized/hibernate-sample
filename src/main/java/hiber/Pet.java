@@ -19,7 +19,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @SequenceGenerator(name = "pet_seq")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Pet {
+public class Pet {
 
 	public Long getId() {
 		return id;

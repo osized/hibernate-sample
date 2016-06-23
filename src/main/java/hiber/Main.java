@@ -177,7 +177,7 @@ package hiber;
             d.setAge(6);
             d.setBreed(b);
             d.setTrained(true);
-            h = (Human) s.createQuery("from Human where name like 'Иванов%'").uniqueResult();
+            h = (Human) s.createQuery("from Human where name like 'Иванов%'").list().get(0);
             d.getHumans().add(h);
             s.save(d);
             s.getTransaction().commit();
